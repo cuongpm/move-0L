@@ -582,6 +582,10 @@ fn handle_expected_output(test_path: &Path, output: impl AsRef<str>) -> Result<(
         std::fs::write(&exp_path, "").unwrap();
     }
     let expected_output = std::fs::read_to_string(&exp_path).unwrap();
+    println!("--- test_path: {:?}", &test_path);
+    println!("--- expected_output: {:?}", &expected_output);
+    println!("--- output: {:?}", output);
+
     if output != expected_output {
         let msg = format!(
             "Expected errors differ from actual errors:\n{}",
